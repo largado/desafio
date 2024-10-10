@@ -10,6 +10,7 @@ public class Contrato {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
+    private String data;
     private String nome;
+    private Float resultado;
 }

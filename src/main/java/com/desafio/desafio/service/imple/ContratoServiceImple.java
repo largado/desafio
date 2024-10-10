@@ -17,8 +17,9 @@ public class ContratoServiceImple implements ContratoService {
     }
 
     @Override
-    public void adicionar(Contrato contrato) {
+    public Contrato adicionar(Contrato contrato) {
 
+        return contrato;
     }
 
     @Override

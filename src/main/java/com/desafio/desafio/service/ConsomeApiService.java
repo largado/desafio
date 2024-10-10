@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-@FeignClient(name = "consomeapi", url = "localhost:9010")
+@FeignClient(name = "consomeapi", url = "localhost:8080")
 public interface ConsomeApiService {
     @RequestMapping(method = RequestMethod.GET, value = "/{id}/json")
     Contrato busca(@PathVariable("id") String cep);

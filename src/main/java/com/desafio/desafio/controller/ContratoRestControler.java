@@ -3,8 +3,11 @@ package com.desafio.desafio.controller;
 import com.desafio.desafio.model.Contrato;
 import com.desafio.desafio.service.ContratoService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("contratos")
@@ -14,7 +17,9 @@ public class ContratoRestControler {
     private ContratoService contratoService;
 
     @GetMapping
-    public ResponseEntity<Iterable<Contrato>> busca() { return ResponseEntity.ok(contratoService.busca()); }
+    public ResponseEntity<Iterable<Contrato>> busca() {
+        List<Contrato> contratoes = (List<Contrato>) contratoService.busca();
+        return ResponseEntity.ok(contratoService.busca()); }
 
     @GetMapping("/{id}")
     public ResponseEntity<Contrato> buscaPorId(@PathVariable Long id){
@@ -23,8 +28,8 @@ public class ContratoRestControler {
 
     @PostMapping
     public ResponseEntity<Contrato> adicionar(@RequestBody Contrato contrato) {
-        contratoService.adicionar(contrato);
-        return ResponseEntity.ok(contrato);
+        Contrato criarContrato = contratoService.adicionar(contrato);
+        return new ResponseEntity<>(criarContrato, HttpStatus.CREATED);
 
     }
 
